@@ -10,6 +10,12 @@ export function Footer() {
             <p className="text-sm text-muted-foreground">
               Integrity-enforced investigative journalism platform.
             </p>
+            <Link
+              href="/about"
+              className="text-sm text-muted-foreground hover:text-foreground mt-2 inline-block"
+            >
+              About the project
+            </Link>
           </div>
           <div>
             <h4 className="font-medium mb-3 text-sm">Platform</h4>
