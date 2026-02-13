@@ -119,10 +119,16 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
-    @apply bg-background text-foreground;
+  }
+  ::selection {
+    background: oklch(0.205 0 0);
+    color: oklch(0.985 0 0);
+  }
+  .dark ::selection {
+    background: oklch(0.922 0 0);
+    color: oklch(0.205 0 0);
   }
 }
