@@ -39,4 +39,4 @@ jobs:
         if: steps.deploy.outputs.url != ''
         run: |
           echo "Aliasing ${{ steps.deploy.outputs.url }} to dev.warrant.ink"
-          vercel alias "${{ steps.deploy.outputs.url }}" dev.warrant.ink --token=${{ secrets.VERCEL_TOKEN }}
+          vercel alias set "${{ steps.deploy.outputs.url }}" dev.warrant.ink --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }}
