@@ -19,10 +19,13 @@ export const createArticleSchema = z.object({
     .max(200, "Title must be less than 200 characters"),
   summary: z
     .string()
-    .max(500, "Summary must be less than 500 characters")
+    .max(300, "Summary must be less than 300 characters")
     .optional(),
   content: z.any(), // Tiptap JSON content
-  contentText: z.string().min(100, "Article must be at least 100 characters"),
+  contentText: z
+    .string()
+    .min(100, "Article must be at least 100 characters")
+    .max(50_000, "Article must be less than 50,000 characters"),
   sources: z
     .array(
       z.object({
@@ -54,10 +57,13 @@ export const updateArticleSchema = z.object({
     .optional(),
   summary: z
     .string()
-    .max(500, "Summary must be less than 500 characters")
+    .max(300, "Summary must be less than 300 characters")
     .optional(),
   content: z.any().optional(),
-  contentText: z.string().optional(),
+  contentText: z
+    .string()
+    .max(50_000, "Article must be less than 50,000 characters")
+    .optional(),
   changeNote: z.string().optional(),
 });
 

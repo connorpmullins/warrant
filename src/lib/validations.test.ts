@@ -134,6 +134,38 @@ describe("Validation Schemas", () => {
       });
       expect(result.success).toBe(true);
     });
+
+    it("rejects summary longer than 300 characters", () => {
+      const result = createArticleSchema.safeParse({
+        ...validArticle,
+        summary: "A".repeat(301),
+      });
+      expect(result.success).toBe(false);
+    });
+
+    it("accepts summary at exactly 300 characters", () => {
+      const result = createArticleSchema.safeParse({
+        ...validArticle,
+        summary: "A".repeat(300),
+      });
+      expect(result.success).toBe(true);
+    });
+
+    it("rejects contentText longer than 50,000 characters", () => {
+      const result = createArticleSchema.safeParse({
+        ...validArticle,
+        contentText: "A".repeat(50_001),
+      });
+      expect(result.success).toBe(false);
+    });
+
+    it("accepts contentText at exactly 50,000 characters", () => {
+      const result = createArticleSchema.safeParse({
+        ...validArticle,
+        contentText: "A".repeat(50_000),
+      });
+      expect(result.success).toBe(true);
+    });
   });
 
   // ============================================================
@@ -155,6 +187,20 @@ describe("Validation Schemas", () => {
 
     it("rejects title shorter than 5 characters", () => {
       const result = updateArticleSchema.safeParse({ title: "Hi" });
+      expect(result.success).toBe(false);
+    });
+
+    it("rejects summary longer than 300 characters", () => {
+      const result = updateArticleSchema.safeParse({
+        summary: "A".repeat(301),
+      });
+      expect(result.success).toBe(false);
+    });
+
+    it("rejects contentText longer than 50,000 characters", () => {
+      const result = updateArticleSchema.safeParse({
+        contentText: "A".repeat(50_001),
+      });
       expect(result.success).toBe(false);
     });
   });

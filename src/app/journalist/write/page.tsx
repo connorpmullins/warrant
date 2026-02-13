@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { RichTextEditor } from "@/components/editor/rich-text-editor";
 import { Button } from "@/components/ui/button";
@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Loader2, Plus, Trash2, Save, Send } from "lucide-react";
 import { useUser } from "@/components/providers";
 import { toast } from "sonner";
@@ -46,6 +47,25 @@ const emptySource: SourceInput = {
 };
 
 export default function WriteArticlePage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="container max-w-4xl mx-auto px-4 py-8">
+          <Skeleton className="h-8 w-48 mb-6" />
+          <div className="space-y-4">
+            <Skeleton className="h-10 w-full" />
+            <Skeleton className="h-20 w-full" />
+            <Skeleton className="h-64 w-full" />
+          </div>
+        </div>
+      }
+    >
+      <WriteArticleContent />
+    </Suspense>
+  );
+}
+
+function WriteArticleContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const editId = searchParams.get("edit");
@@ -227,8 +247,12 @@ export default function WriteArticlePage() {
             placeholder="Brief summary of the article"
             value={summary}
             onChange={(e) => setSummary(e.target.value)}
+            maxLength={300}
             rows={2}
           />
+          <p className="text-xs text-muted-foreground text-right">
+            {summary.length}/300
+          </p>
         </div>
 
         {/* Editor */}
