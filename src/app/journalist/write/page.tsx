@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { RichTextEditor } from "@/components/editor/rich-text-editor";
 import { Button } from "@/components/ui/button";
@@ -114,6 +114,17 @@ function WriteArticleContent() {
     })();
   }, [editId]);
 
+  // Clear validation errors whenever form data changes
+  const hasErrors = useRef(false);
+  hasErrors.current = !!(error || Object.keys(fieldErrors).length > 0);
+  useEffect(() => {
+    if (hasErrors.current) {
+      setError(null);
+      setFieldErrors({});
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [title, summary, contentText, sources]);
+
   if (!user || user.role !== "JOURNALIST") {
     return (
       <div className="container max-w-3xl mx-auto px-4 py-20 text-center">
@@ -127,28 +138,20 @@ function WriteArticleContent() {
 
   function addSource() {
     setSources([...sources, { ...emptySource }]);
-    clearErrors();
   }
 
   function removeSource(index: number) {
     setSources(sources.filter((_, i) => i !== index));
-    clearErrors();
   }
 
   function updateSource(index: number, field: keyof SourceInput, value: string | boolean) {
     const updated = [...sources];
     updated[index] = { ...updated[index], [field]: value };
     setSources(updated);
-    clearErrors();
   }
 
   function isSourceComplete(source: SourceInput): boolean {
     return !!(source.title && source.sourceType && source.quality);
-  }
-
-  function clearErrors() {
-    if (error) setError(null);
-    if (Object.keys(fieldErrors).length > 0) setFieldErrors({});
   }
 
   function validate(): boolean {
@@ -308,7 +311,7 @@ function WriteArticleContent() {
             id="title"
             placeholder="Article title"
             value={title}
-            onChange={(e) => { setTitle(e.target.value); clearErrors(); }}
+            onChange={(e) => setTitle(e.target.value)}
             className="text-lg"
           />
           {fieldErrors.title && (
@@ -323,7 +326,7 @@ function WriteArticleContent() {
             id="summary"
             placeholder="Brief summary of the article"
             value={summary}
-            onChange={(e) => { setSummary(e.target.value); clearErrors(); }}
+            onChange={(e) => setSummary(e.target.value)}
             maxLength={300}
             rows={2}
           />
@@ -343,7 +346,6 @@ function WriteArticleContent() {
             onChange={(json, text) => {
               setContentJson(json);
               setContentText(text);
-              clearErrors();
             }}
           />
           {fieldErrors.contentText && (
@@ -496,38 +498,38 @@ function WriteArticleContent() {
           </CardContent>
         </Card>
 
-        {/* Error */}
-        {error && (
-          <Alert variant="destructive">
-            <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
-
         {/* Actions */}
-        <div className="flex gap-3 justify-end pt-4 border-t">
-          <Button
-            variant="outline"
-            onClick={handleSave}
-            disabled={saving || publishing}
-          >
-            {saving ? (
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            ) : (
-              <Save className="mr-2 h-4 w-4" />
-            )}
-            Save Draft
-          </Button>
-          <Button
-            onClick={handlePublish}
-            disabled={saving || publishing}
-          >
-            {publishing ? (
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            ) : (
-              <Send className="mr-2 h-4 w-4" />
-            )}
-            Publish
-          </Button>
+        <div className="pt-4 border-t space-y-3">
+          <div className="flex gap-3 justify-end">
+            <Button
+              variant="outline"
+              onClick={handleSave}
+              disabled={saving || publishing}
+            >
+              {saving ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <Save className="mr-2 h-4 w-4" />
+              )}
+              Save Draft
+            </Button>
+            <Button
+              onClick={handlePublish}
+              disabled={saving || publishing}
+            >
+              {publishing ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <Send className="mr-2 h-4 w-4" />
+              )}
+              Publish
+            </Button>
+          </div>
+          {(error || Object.keys(fieldErrors).length > 0) && (
+            <p className="text-sm text-destructive text-right">
+              {error || "Please fix the errors above before continuing."}
+            </p>
+          )}
         </div>
       </div>
     </div>
