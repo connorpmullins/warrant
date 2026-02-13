@@ -2,10 +2,10 @@ import { NextRequest } from "next/server";
 import { createMagicLink } from "@/lib/auth";
 import { successResponse, errorResponse } from "@/lib/api";
 
-// DEV-ONLY: Returns raw magic link token for E2E tests.
-// This endpoint MUST NOT exist in production.
+// DEV/STAGING: Returns raw magic link token for E2E tests and staging login.
+// Gated by ENABLE_DEV_LOGIN — must NOT be set in production.
 export async function POST(request: NextRequest) {
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.ENABLE_DEV_LOGIN !== "true") {
     return errorResponse("Not available", 404);
   }
 

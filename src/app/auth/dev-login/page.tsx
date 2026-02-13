@@ -50,7 +50,8 @@ export default function DevLoginPage() {
     }
   }
 
-  if (process.env.NODE_ENV === "production") {
+  // Gate on explicit env var — allows staging (dev.warrant.ink) while blocking production
+  if (process.env.NEXT_PUBLIC_ENABLE_DEV_LOGIN !== "true") {
     return (
       <div className="container max-w-md mx-auto px-4 py-20 text-center">
         <p className="text-muted-foreground">Not available in production.</p>
