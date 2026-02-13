@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import { requireAuth, getSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { createFeatureRequestSchema } from "@/lib/validations";
-import { successResponse, errorResponse, handleApiError } from "@/lib/api";
+import { successResponse, handleApiError } from "@/lib/api";
 
 // GET /api/feature-requests - List feature requests
 export async function GET(request: NextRequest) {

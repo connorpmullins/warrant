@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { Pool } from "pg";
 import { PrismaPg } from "@prisma/adapter-pg";
-import { createHash, randomBytes } from "crypto";
+import { createHash } from "crypto";
 
 const connectionString = process.env.DATABASE_URL || "postgresql://warrant:warrant_dev@localhost:5432/warrant";
 const pool = new Pool({ connectionString });

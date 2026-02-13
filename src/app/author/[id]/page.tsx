@@ -6,7 +6,6 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Shield, FileText, TrendingUp } from "lucide-react";
-import { db } from "@/lib/db";
 
 interface AuthorData {
   id: string;

@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import { verifyMagicLink, createSession, setSessionCookie } from "@/lib/auth";
-import { handleApiError, getIpAddress, getUserAgent } from "@/lib/api";
+import { getIpAddress, getUserAgent } from "@/lib/api";
 import { auditLog } from "@/lib/audit";
 import { redirect } from "next/navigation";
 

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { ZodError } from "zod";
+import { ZodError, ZodIssueCode } from "zod";
 import {
   successResponse,
   errorResponse,
@@ -51,7 +51,7 @@ describe("API Helpers", () => {
     it("handles ZodError with validation messages", async () => {
       const zodError = new ZodError([]);
       zodError.addIssue({
-        code: "invalid_type" as any,
+        code: ZodIssueCode.invalid_type,
         expected: "string",
         received: "number",
         path: ["email"],
