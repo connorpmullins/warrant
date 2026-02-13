@@ -83,6 +83,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Create journalist profile and update role
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Prisma interactive transaction client type is not exported
     await db.$transaction(async (tx: any) => {
       await tx.user.update({
         where: { id: user.id },

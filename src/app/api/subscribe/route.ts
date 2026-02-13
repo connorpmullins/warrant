@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Get or create Stripe customer
-    let subscription = await db.subscription.findUnique({
+    const subscription = await db.subscription.findUnique({
       where: { userId: user.id },
     });
 

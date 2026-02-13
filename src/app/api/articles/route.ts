@@ -4,9 +4,6 @@ import { db } from "@/lib/db";
 import { createArticleSchema } from "@/lib/validations";
 import { successResponse, errorResponse, handleApiError } from "@/lib/api";
 import { auditLog } from "@/lib/audit";
-import { assessSourceCompleteness, assessContentRisk } from "@/services/integrity";
-import { recordReputationEvent } from "@/services/integrity";
-import { indexArticle } from "@/lib/search";
 
 function generateSlug(title: string): string {
   return (
@@ -143,6 +140,7 @@ export async function POST(request: NextRequest) {
     const slug = generateSlug(data.title);
 
     // Create article with sources in a transaction
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Prisma interactive transaction client type is not exported
     const article = await db.$transaction(async (tx: any) => {
       const newArticle = await tx.article.create({
         data: {

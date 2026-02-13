@@ -122,7 +122,6 @@ function WriteArticleContent() {
       setError(null);
       setFieldErrors({});
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title, summary, contentText, sources]);
 
   if (!user || user.role !== "JOURNALIST") {

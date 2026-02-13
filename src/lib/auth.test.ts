@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { mockPrismaClient, mockCookieStore } from "@/test/setup";
 import { mockRedis } from "@/test/setup";
 
+
 import {
   generateToken,
   hashToken,
@@ -301,7 +302,7 @@ describe("Auth", () => {
       mockRedis.get.mockResolvedValueOnce(JSON.stringify({ userId: "user-1" }));
       mockPrismaClient.user.findUnique.mockResolvedValueOnce(mockUser);
 
-      await expect(requireRole("JOURNALIST" as any)).rejects.toThrow(AuthError);
+      await expect(requireRole("JOURNALIST")).rejects.toThrow(AuthError);
     });
 
     it("allows admin to bypass role check", async () => {
@@ -310,7 +311,7 @@ describe("Auth", () => {
       mockRedis.get.mockResolvedValueOnce(JSON.stringify({ userId: "admin-1" }));
       mockPrismaClient.user.findUnique.mockResolvedValueOnce(mockUser);
 
-      const user = await requireRole("JOURNALIST" as any);
+      const user = await requireRole("JOURNALIST");
       expect(user.role).toBe("ADMIN");
     });
   });

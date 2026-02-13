@@ -3,7 +3,7 @@ import { requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { createPayout } from "@/lib/stripe";
 import { generateRevenueEntries } from "@/services/revenue";
-import { successResponse, errorResponse, handleApiError } from "@/lib/api";
+import { successResponse, handleApiError } from "@/lib/api";
 
 function currentPeriod(): string {
   const now = new Date();

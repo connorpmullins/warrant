@@ -158,6 +158,7 @@ export async function PATCH(
 
     const newVersion = article.version + 1;
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Prisma interactive transaction client type is not exported
     const updated = await db.$transaction(async (tx: any) => {
       const updatedArticle = await tx.article.update({
         where: { id },

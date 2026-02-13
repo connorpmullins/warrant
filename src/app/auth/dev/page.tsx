@@ -91,7 +91,7 @@ export default function DevLoginPage() {
           ))}
 
           <p className="text-xs text-muted-foreground pt-2">
-            Clicking "Log in" creates a magic link token and immediately verifies it,
+            Clicking &ldquo;Log in&rdquo; creates a magic link token and immediately verifies it,
             setting a session cookie and redirecting to the appropriate dashboard.
           </p>
         </CardContent>

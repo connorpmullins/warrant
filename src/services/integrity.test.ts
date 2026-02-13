@@ -1,6 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { mockPrismaClient } from "@/test/setup";
-
 // Import after mocks are set up
 import {
   assessSourceCompleteness,
@@ -244,8 +243,7 @@ describe("Integrity Service", () => {
 
       const newScore = await recordReputationEvent(
         "user-1",
-        "ARTICLE_PUBLISHED" as any
-      );
+        "ARTICLE_PUBLISHED"      );
 
       expect(newScore).toBe(52); // 50 + 2.0
       expect(mockPrismaClient.reputationEvent.create).toHaveBeenCalled();
@@ -270,8 +268,7 @@ describe("Integrity Service", () => {
 
       const newScore = await recordReputationEvent(
         "user-1",
-        "ARTICLE_PUBLISHED" as any
-      );
+        "ARTICLE_PUBLISHED"      );
 
       expect(newScore).toBe(100); // 99 + 2 clamped to 100
     });
@@ -287,8 +284,7 @@ describe("Integrity Service", () => {
 
       const newScore = await recordReputationEvent(
         "user-1",
-        "DISPUTE_UPHELD_AGAINST" as any
-      );
+        "DISPUTE_UPHELD_AGAINST"      );
 
       expect(newScore).toBe(0); // 2 - 5 clamped to 0
     });
@@ -304,7 +300,7 @@ describe("Integrity Service", () => {
 
       const newScore = await recordReputationEvent(
         "user-1",
-        "MANUAL_ADJUSTMENT" as any,
+        "MANUAL_ADJUSTMENT",
         { delta: 10, reason: "Admin adjustment" }
       );
 
@@ -317,8 +313,7 @@ describe("Integrity Service", () => {
 
       const newScore = await recordReputationEvent(
         "user-1",
-        "ARTICLE_PUBLISHED" as any
-      );
+        "ARTICLE_PUBLISHED"      );
 
       expect(newScore).toBe(50); // default
     });
@@ -409,7 +404,7 @@ describe("Integrity Service", () => {
 
       await processCorrectionReputation(
         "user-1",
-        "TYPO" as any,
+        "TYPO",
         "article-1"
       );
 
@@ -436,7 +431,7 @@ describe("Integrity Service", () => {
 
       await processCorrectionReputation(
         "user-1",
-        "FACTUAL_ERROR" as any,
+        "FACTUAL_ERROR",
         "article-1"
       );
 
