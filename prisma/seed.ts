@@ -3,7 +3,7 @@ import { Pool } from "pg";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { createHash, randomBytes } from "crypto";
 
-const connectionString = process.env.DATABASE_URL || "postgresql://freepress:freepress_dev@localhost:5432/freepress";
+const connectionString = process.env.DATABASE_URL || "postgresql://warrant:warrant_dev@localhost:5432/warrant";
 const pool = new Pool({ connectionString });
 const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
@@ -45,10 +45,10 @@ async function main() {
   // Admin User
   // ============================================================
   const admin = await prisma.user.upsert({
-    where: { email: "admin@freepress.news" },
+    where: { email: "admin@warrant.ink" },
     update: {},
     create: {
-      email: "admin@freepress.news",
+      email: "admin@warrant.ink",
       displayName: "Platform Admin",
       role: "ADMIN",
       emailVerified: true,
@@ -67,7 +67,7 @@ async function main() {
     },
   });
 
-  console.log("  Created admin: admin@freepress.news");
+  console.log("  Created admin: admin@warrant.ink");
 
   // ============================================================
   // Journalists
@@ -328,7 +328,7 @@ async function main() {
         content: [
           {
             type: "text",
-            text: "A six-month investigation by Free Press has uncovered that Riverside County allocated $47 million in federal infrastructure funds to projects that were never completed, with at least $12 million flowing to contractors with direct ties to county officials.",
+            text: "A six-month investigation by Warrant has uncovered that Riverside County allocated $47 million in federal infrastructure funds to projects that were never completed, with at least $12 million flowing to contractors with direct ties to county officials.",
           },
         ],
       },
@@ -402,7 +402,7 @@ async function main() {
         content: [
           {
             type: "text",
-            text: "The county's Inspector General confirmed to Free Press that an investigation was opened in September 2024 but declined to provide further details.",
+            text: "The county's Inspector General confirmed to Warrant that an investigation was opened in September 2024 but declined to provide further details.",
           },
         ],
       },
@@ -421,7 +421,7 @@ async function main() {
         "A six-month investigation reveals that tens of millions in federal infrastructure dollars were allocated to projects that were never started, with funds flowing to firms tied to county officials.",
       content: article1Content,
       contentText:
-        "A six-month investigation by Free Press has uncovered that Riverside County allocated $47 million in federal infrastructure funds to projects that were never completed, with at least $12 million flowing to contractors with direct ties to county officials. Public records obtained through Freedom of Information requests reveal a pattern of no-bid contracts awarded to three firms sharing the same registered agent. Site visits to 14 of the 23 funded project locations revealed that eight showed no evidence of any construction activity.",
+        "A six-month investigation by Warrant has uncovered that Riverside County allocated $47 million in federal infrastructure funds to projects that were never completed, with at least $12 million flowing to contractors with direct ties to county officials. Public records obtained through Freedom of Information requests reveal a pattern of no-bid contracts awarded to three firms sharing the same registered agent. Site visits to 14 of the 23 funded project locations revealed that eight showed no evidence of any construction activity.",
       status: "PUBLISHED",
       publishedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
       version: 1,
@@ -1321,7 +1321,7 @@ async function main() {
   console.log("");
   console.log("=== Seed Complete ===");
   console.log("");
-  console.log("Dev session tokens (set as cookie 'fp_session'):");
+  console.log("Dev session tokens (set as cookie 'warrant_session'):");
   console.log(`  Admin:       ${adminToken.raw}`);
   console.log(`  Journalist1: ${j1Token.raw}`);
   console.log(`  Journalist2: ${j2Token.raw}`);
@@ -1329,7 +1329,7 @@ async function main() {
   console.log(`  Reader2:     ${reader2Token.raw} (unsubscribed)`);
   console.log("");
   console.log("These are 64-char hex strings that pass middleware validation.");
-  console.log("Use: document.cookie = 'fp_session=<token>; path=/'");
+  console.log("Use: document.cookie = 'warrant_session=<token>; path=/'");
 }
 
 main()

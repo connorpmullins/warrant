@@ -12,7 +12,7 @@ test.describe("Flow 1: Public Smoke Test", () => {
     await expect(page.getByRole("link", { name: /feed/i }).first()).toBeVisible();
     await expect(page.getByRole("link", { name: /search/i }).first()).toBeVisible();
     // Hero / CTA content
-    await expect(page.locator("body")).toContainText(/free press/i);
+    await expect(page.locator("body")).toContainText(/warrant/i);
   });
 
   test("/terms renders content", async ({ page }) => {

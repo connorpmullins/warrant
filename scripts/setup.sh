@@ -2,7 +2,7 @@
 set -euo pipefail
 
 echo "=============================================="
-echo "  Free Press - Development Setup"
+echo "  Warrant - Development Setup"
 echo "=============================================="
 echo ""
 
@@ -28,7 +28,7 @@ docker compose up -d
 # Wait for Postgres to be ready
 echo "Waiting for PostgreSQL..."
 for i in {1..30}; do
-  if docker compose exec -T postgres pg_isready -U freepress >/dev/null 2>&1; then
+  if docker compose exec -T postgres pg_isready -U warrant >/dev/null 2>&1; then
     echo "  PostgreSQL is ready!"
     break
   fi
@@ -65,7 +65,7 @@ echo "  View the app:          http://localhost:3000"
 echo "  View emails:           http://localhost:8025 (Mailpit)"
 echo "  View search:           http://localhost:7700 (Meilisearch)"
 echo ""
-echo "  Dev login tokens (set as cookie 'fp_session'):"
+echo "  Dev login tokens (set as cookie 'warrant_session'):"
 echo "    Admin:       admin-dev-token"
 echo "    Journalist:  journalist1-dev-token"
 echo "    Reader:      reader-dev-token"

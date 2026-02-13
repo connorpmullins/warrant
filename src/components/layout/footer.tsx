@@ -6,7 +6,7 @@ export function Footer() {
       <div className="container max-w-6xl mx-auto px-4 py-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-semibold mb-3">Free Press</h3>
+            <h3 className="font-semibold mb-3">Warrant</h3>
             <p className="text-sm text-muted-foreground">
               Integrity-enforced investigative journalism platform.
             </p>
@@ -75,7 +75,7 @@ export function Footer() {
         </div>
         <div className="mt-8 pt-6 border-t flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Free Press. AGPL-3.0 Licensed.
+            &copy; {new Date().getFullYear()} Warrant. AGPL-3.0 Licensed.
           </p>
           <p className="text-xs text-muted-foreground">
             We are a platform, not a publisher. Content is authored by verified journalists.

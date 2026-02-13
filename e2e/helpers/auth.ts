@@ -28,7 +28,7 @@ export async function loginAs(page: Page, email: string): Promise<void> {
  * Log in as the seeded admin user.
  */
 export async function loginAsAdmin(page: Page): Promise<void> {
-  await loginAs(page, "admin@freepress.news");
+  await loginAs(page, "admin@warrant.ink");
 }
 
 /**

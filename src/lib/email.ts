@@ -16,7 +16,7 @@ async function sendWithMailpit(options: SendEmailOptions): Promise<void> {
   });
 
   await transporter.sendMail({
-    from: process.env.EMAIL_FROM || "noreply@freepress.news",
+    from: process.env.EMAIL_FROM || "noreply@warrant.ink",
     to: options.to,
     subject: options.subject,
     html: options.html,
@@ -27,7 +27,7 @@ async function sendWithMailpit(options: SendEmailOptions): Promise<void> {
 async function sendWithResend(options: SendEmailOptions): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);
   await resend.emails.send({
-    from: process.env.EMAIL_FROM || "noreply@freepress.news",
+    from: process.env.EMAIL_FROM || "noreply@warrant.ink",
     to: options.to,
     subject: options.subject,
     html: options.html,
@@ -57,7 +57,7 @@ export async function sendMagicLinkEmail(
 
   await sendEmail({
     to: email,
-    subject: "Sign in to Free Press",
+    subject: "Sign in to Warrant",
     html: `
       <!DOCTYPE html>
       <html>
@@ -67,7 +67,7 @@ export async function sendMagicLinkEmail(
         </head>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 560px; margin: 0 auto; padding: 40px 20px; color: #1a1a1a;">
           <div style="text-align: center; margin-bottom: 32px;">
-            <h1 style="font-size: 24px; font-weight: 700; margin: 0;">Free Press</h1>
+            <h1 style="font-size: 24px; font-weight: 700; margin: 0;">Warrant</h1>
             <p style="color: #666; margin-top: 4px; font-size: 14px;">Integrity-enforced journalism</p>
           </div>
           
@@ -92,6 +92,6 @@ export async function sendMagicLinkEmail(
         </body>
       </html>
     `,
-    text: `Sign in to Free Press\n\nClick this link to sign in: ${verifyUrl}\n\nThis link expires in 15 minutes. If you didn't request this email, you can safely ignore it.`,
+    text: `Sign in to Warrant\n\nClick this link to sign in: ${verifyUrl}\n\nThis link expires in 15 minutes. If you didn't request this email, you can safely ignore it.`,
   });
 }

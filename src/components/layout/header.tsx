@@ -51,7 +51,7 @@ export function Header() {
       <div className="container flex h-14 max-w-6xl items-center mx-auto px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 mr-6">
-          <span className="font-bold text-xl tracking-tight">Free Press</span>
+          <span className="font-bold text-xl tracking-tight">Warrant</span>
         </Link>
 
         {/* Desktop nav */}

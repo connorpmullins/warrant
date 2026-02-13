@@ -1,25 +1,25 @@
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: freepress_postgres
+    container_name: warrant_postgres
     restart: unless-stopped
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: freepress
-      POSTGRES_PASSWORD: freepress_dev
-      POSTGRES_DB: freepress
+      POSTGRES_USER: warrant
+      POSTGRES_PASSWORD: warrant_dev
+      POSTGRES_DB: warrant
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U freepress"]
+      test: ["CMD-SHELL", "pg_isready -U warrant"]
       interval: 5s
       timeout: 5s
       retries: 5
 
   redis:
     image: redis:7-alpine
-    container_name: freepress_redis
+    container_name: warrant_redis
     restart: unless-stopped
     ports:
       - "6379:6379"
@@ -33,12 +33,12 @@ services:
 
   meilisearch:
     image: getmeili/meilisearch:v1.6
-    container_name: freepress_meilisearch
+    container_name: warrant_meilisearch
     restart: unless-stopped
     ports:
       - "7700:7700"
     environment:
-      MEILI_MASTER_KEY: freepress_meili_dev_key
+      MEILI_MASTER_KEY: warrant_meili_dev_key
       MEILI_ENV: development
     volumes:
       - meilisearch_data:/meili_data
@@ -50,7 +50,7 @@ services:
 
   mailpit:
     image: axllent/mailpit:latest
-    container_name: freepress_mailpit
+    container_name: warrant_mailpit
     restart: unless-stopped
     ports:
       - "1025:1025" # SMTP

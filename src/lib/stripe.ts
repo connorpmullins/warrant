@@ -45,7 +45,7 @@ export async function createCheckoutSession(
     success_url: successUrl,
     cancel_url: cancelUrl,
     subscription_data: {
-      metadata: { source: "free_press" },
+      metadata: { source: "warrant" },
     },
   });
 
@@ -201,7 +201,7 @@ export async function createVerificationSession(
 
   const session = await stripe.identity.verificationSessions.create({
     type: "document",
-    metadata: { source: "free_press_journalist_verification" },
+    metadata: { source: "warrant_journalist_verification" },
     options: {
       document: {
         require_matching_selfie: true,

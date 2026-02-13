@@ -1,6 +1,6 @@
 # Agent Browser E2E Runbook
 
-This runbook defines the plain-English browser flows any Cursor agent should execute to validate that Free Press is working end-to-end.
+This runbook defines the plain-English browser flows any Cursor agent should execute to validate that Warrant is working end-to-end.
 
 Use this as the default manual certification checklist after meaningful code changes.
 
@@ -30,7 +30,7 @@ If setup is uncertain, first call `GET /api/system/integrations` and verify Stri
 
 Use these seeded identities:
 
-- Admin: `admin@freepress.news`
+- Admin: `admin@warrant.ink`
 - Journalist: `elena.vasquez@example.com`
 - Reader (subscribed): `reader@example.com`
 - Reader (free, for paywall testing): `free-reader@example.com`
@@ -43,7 +43,7 @@ For browser login during testing:
   ```bash
   curl -X POST http://localhost:3000/api/auth/login/test \
     -H "Content-Type: application/json" \
-    -d '{"email": "admin@freepress.news"}'
+    -d '{"email": "admin@warrant.ink"}'
   # Returns: {"data":{"token":"<token>"}}
   # Then open: http://localhost:3000/auth/verify?token=<token>
   ```
@@ -191,7 +191,7 @@ Pass criteria:
 
 Goal: verify admin actions can be executed from UI.
 
-1. Log in as `admin@freepress.news`.
+1. Log in as `admin@warrant.ink`.
 2. Open `/admin`.
 3. Open `/admin/flags` (from action link or direct URL).
 4. Confirm pending flags list loads.

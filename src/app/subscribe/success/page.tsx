@@ -57,7 +57,7 @@ function SuccessContent() {
           <h1 className="text-2xl font-bold mb-2">Welcome aboard!</h1>
           <p className="text-muted-foreground mb-4">
             Thank you for supporting independent journalism. You now have full
-            access to all articles on Free Press.
+            access to all articles on Warrant.
           </p>
 
           {loading ? (

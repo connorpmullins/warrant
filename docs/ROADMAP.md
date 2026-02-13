@@ -1,4 +1,4 @@
-# Free Press — Roadmap
+# Warrant — Roadmap
 
 > Consolidated status, blockers, and next steps.
 > Last updated: Feb 13, 2026
@@ -7,7 +7,7 @@
 
 ## 1. What's Done
 
-**Live URL:** https://freepress-snowy.vercel.app
+**Live URL:** https://warrant.ink
 **Database:** Neon Postgres (connected via Vercel Marketplace)
 **Unit Tests:** 142 passing (`npm run test`)
 **E2E Tests:** 32 passing (`npm run test:e2e`) — Playwright, Flows 1-8 from runbook
@@ -59,7 +59,7 @@
 
 | Service | Status | Details |
 |---------|--------|---------|
-| **Vercel** | Production | Project: `free_press`, auto-deploy via CLI |
+| **Vercel** | Production | Project: `warrant`, auto-deploy via CI |
 | **Neon Postgres** | Connected | Via Vercel Marketplace, all envs |
 | **Stripe** | Test Mode | Checkout, Identity verification, Connect payouts, webhook handler |
 | **Stripe Webhook** | Configured | Handles checkout, subscription (created/updated/deleted/trial), invoice (paid/failed), identity, connect events |

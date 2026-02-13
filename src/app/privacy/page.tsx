@@ -16,7 +16,7 @@ export default function PrivacyPage() {
       <section className="space-y-2">
         <h2 className="text-xl font-semibold">Identity Verification</h2>
         <p>
-          Contributor verification is processed through Stripe Identity. Free Press
+          Contributor verification is processed through Stripe Identity. Warrant
           stores verification status and external reference IDs required for
           compliance and payout eligibility.
         </p>

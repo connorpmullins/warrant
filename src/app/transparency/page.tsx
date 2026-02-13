@@ -3,7 +3,7 @@ export default function TransparencyPage() {
     <div className="container max-w-3xl mx-auto px-4 py-10 space-y-6">
       <h1 className="text-3xl font-bold">Transparency</h1>
       <p className="text-muted-foreground">
-        Free Press publishes moderation and integrity decisions with clear rationale
+        Warrant publishes moderation and integrity decisions with clear rationale
         and auditability.
       </p>
       <section className="space-y-2">

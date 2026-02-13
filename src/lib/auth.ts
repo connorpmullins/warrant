@@ -4,7 +4,7 @@ import { redis } from "./redis";
 import { randomBytes, createHash } from "crypto";
 import type { User, UserRole } from "@prisma/client";
 
-const SESSION_COOKIE = "fp_session";
+const SESSION_COOKIE = "warrant_session";
 const SESSION_TTL = 30 * 24 * 60 * 60; // 30 days in seconds
 const MAGIC_LINK_TTL = 15 * 60; // 15 minutes
 

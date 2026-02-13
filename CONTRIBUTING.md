@@ -1,6 +1,6 @@
-# Contributing to Free Press
+# Contributing to Warrant
 
-Thank you for your interest in contributing to Free Press. This document outlines our development workflow and standards.
+Thank you for your interest in contributing to Warrant. This document outlines our development workflow and standards.
 
 ## Development Setup
 

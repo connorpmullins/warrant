@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
       const transferId = await createPayout(
         entry.journalist.stripeConnectId,
         entry.amount,
-        `Free Press payout ${period}`
+        `Warrant payout ${period}`
       );
 
       if (!transferId) {

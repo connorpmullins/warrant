@@ -27,9 +27,9 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "About — Free Press",
+  title: "About — Warrant",
   description:
-    "Learn about Free Press: an open-source platform enforcing journalistic integrity through reputation, transparency, and fair revenue sharing.",
+    "Learn about Warrant: an open-source platform enforcing journalistic integrity through reputation, transparency, and fair revenue sharing.",
 };
 
 export default function AboutPage() {
@@ -49,7 +49,7 @@ export default function AboutPage() {
             <span className="text-primary">journalism matters</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-4">
-            Free Press is an open-source project created by people who are
+            Warrant is an open-source project created by people who are
             concerned with protecting and advancing journalism and the free
             press. We are not a media company. We are not a newsroom. We are a
             community building infrastructure that makes integrity economically
@@ -72,7 +72,7 @@ export default function AboutPage() {
             Why this exists
           </h2>
           <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-12">
-            The incentives of digital media are broken. Free Press is an attempt
+            The incentives of digital media are broken. Warrant is an attempt
             to realign them.
           </p>
 
@@ -199,7 +199,7 @@ export default function AboutPage() {
             What the labels mean
           </h2>
           <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-12">
-            Every article on Free Press carries integrity labels that tell you
+            Every article on Warrant carries integrity labels that tell you
             the current state of its sourcing and accuracy. Here is what each
             one means.
           </p>
@@ -497,7 +497,7 @@ export default function AboutPage() {
             </h2>
             <p className="text-muted-foreground mb-6">
               This is one of the most important principles in our integrity
-              model, and it is what sets Free Press apart from other platforms.
+              model, and it is what sets Warrant apart from other platforms.
             </p>
 
             <Card className="mb-6">
@@ -620,7 +620,7 @@ export default function AboutPage() {
             Open source, always
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
-            Free Press is licensed under the{" "}
+            Warrant is licensed under the{" "}
             <strong>GNU Affero General Public License v3 (AGPL-3.0)</strong>.
             Every algorithm, every scoring formula, every moderation rule is
             published in the open. We believe that a platform asking you to trust
@@ -635,7 +635,7 @@ export default function AboutPage() {
             <code className="text-xs">src/services/revenue.ts</code>.
           </p>
           <Link
-            href="https://github.com/connormullins/free_press"
+            href="https://github.com/connorpmullins/warrant"
             target="_blank"
             rel="noopener noreferrer"
           >

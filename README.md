@@ -1,10 +1,10 @@
-# Free Press
+# Warrant
 
 **Integrity-enforced investigative journalism platform.**
 
 A subscription-based platform where independent journalists publish first-hand investigative reporting. Revenue flows to journalists, not the platform. Integrity is enforced through reputation, not editorial control.
 
-> **Live:** [freepress-snowy.vercel.app](https://freepress-snowy.vercel.app)
+> **Production:** [warrant.ink](https://warrant.ink) | **Staging:** [dev.warrant.ink](https://dev.warrant.ink)
 
 ## Principles
 
@@ -38,8 +38,8 @@ A subscription-based platform where independent journalists publish first-hand i
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/connorpmullins/free_press.git
-cd free_press
+git clone https://github.com/connorpmullins/warrant.git
+cd warrant
 npm install
 ```
 
@@ -85,7 +85,7 @@ Available accounts:
 
 | Account | Email | Role |
 |---------|-------|------|
-| Admin | `admin@freepress.news` | ADMIN |
+| Admin | `admin@warrant.ink` | ADMIN |
 | Journalist (E. Vasquez) | `elena.vasquez@example.com` | JOURNALIST |
 | Journalist (M. Chen) | `marcus.chen@example.com` | JOURNALIST |
 | Journalist (J. Wright) | `james.wright@example.com` | JOURNALIST |
@@ -218,16 +218,12 @@ The app is deployed on [Vercel](https://vercel.com) with:
 - **Payments**: Stripe (test mode, webhook configured)
 - **Email**: Resend (API key configured)
 
-Push to `main` to trigger a production deployment, or use:
+**Environments:**
+- **Production** (`warrant.ink`): Trigger via "Publish" GitHub Action (`workflow_dispatch`)
+- **Staging** (`dev.warrant.ink`): Auto-deploys on push to `main`
+- **Local**: `npm run dev` with Docker Compose services
 
-```bash
-npx vercel deploy --prod
-```
-
-For environment variables, configure them in the Vercel project settings or via CLI:
-```bash
-npx vercel env add VARIABLE_NAME production
-```
+Environment variables are configured in Vercel project settings, scoped to Production vs Preview.
 
 ## Testing
 
@@ -270,4 +266,4 @@ The seed script creates realistic demo data:
 
 ## License
 
-[AGPL-3.0](LICENSE) — Free Press is open source. If you modify and deploy it, you must share your changes.
+[AGPL-3.0](LICENSE) — Warrant is open source. If you modify and deploy it, you must share your changes.

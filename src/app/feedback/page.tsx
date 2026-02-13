@@ -133,7 +133,7 @@ export default function FeedbackPage() {
         <div>
           <h1 className="text-2xl font-bold">Feature Requests</h1>
           <p className="text-muted-foreground">
-            Help shape the future of Free Press
+            Help shape the future of Warrant
           </p>
         </div>
         {user && (

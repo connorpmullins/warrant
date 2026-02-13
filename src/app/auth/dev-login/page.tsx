@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Loader2 } from "lucide-react";
 
 const DEV_ACCOUNTS = [
-  { email: "admin@freepress.news", label: "Admin", role: "ADMIN", color: "destructive" as const },
+  { email: "admin@warrant.ink", label: "Admin", role: "ADMIN", color: "destructive" as const },
   { email: "elena.vasquez@example.com", label: "Journalist — E.Vasquez", role: "JOURNALIST", color: "default" as const },
   { email: "marcus.chen@example.com", label: "Journalist — M.Chen", role: "JOURNALIST", color: "default" as const },
   { email: "james.wright@example.com", label: "Journalist — J.Wright", role: "JOURNALIST", color: "default" as const },

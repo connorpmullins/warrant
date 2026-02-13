@@ -11,11 +11,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Free Press - Integrity-Enforced Journalism",
+  title: "Warrant - Integrity-Enforced Journalism",
   description:
     "A subscription-based platform where independent journalists publish first-hand investigative reporting. Revenue flows to journalists, not the platform. Integrity is enforced through reputation, not editorial control.",
   openGraph: {
-    title: "Free Press",
+    title: "Warrant",
     description: "Integrity-enforced investigative journalism platform",
     type: "website",
   },

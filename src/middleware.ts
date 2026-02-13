@@ -99,7 +99,7 @@ export function middleware(request: NextRequest) {
   }
 
   // Check for session cookie (lightweight check - actual session validation happens in API)
-  const sessionCookie = request.cookies.get("fp_session");
+  const sessionCookie = request.cookies.get("warrant_session");
   const isAuthenticated = !!sessionCookie?.value;
   const hasValidSessionShape = /^[a-f0-9]{64}$/i.test(sessionCookie?.value ?? "");
 

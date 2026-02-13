@@ -93,7 +93,7 @@ export default function ApplyPage() {
           </div>
           <CardTitle>Become a Contributor</CardTitle>
           <CardDescription>
-            Join Free Press as a verified journalist. You&apos;ll need to verify
+            Join Warrant as a verified journalist. You&apos;ll need to verify
             your identity before publishing.
           </CardDescription>
         </CardHeader>

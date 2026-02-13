@@ -91,7 +91,7 @@ function LoginForm() {
     <div className="container max-w-md mx-auto px-4 py-20">
       <Card>
         <CardHeader className="text-center">
-          <CardTitle>Sign in to Free Press</CardTitle>
+          <CardTitle>Sign in to Warrant</CardTitle>
           <CardDescription>
             Enter your email and we&apos;ll send you a magic link to sign in.
           </CardDescription>
@@ -146,7 +146,7 @@ export default function LoginPage() {
         <div className="container max-w-md mx-auto px-4 py-20">
           <Card>
             <CardHeader className="text-center">
-              <CardTitle>Sign in to Free Press</CardTitle>
+              <CardTitle>Sign in to Warrant</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="h-24 flex items-center justify-center">
