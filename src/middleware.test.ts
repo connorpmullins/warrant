@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 
 // We need to test middleware without the full Next.js setup
 // So we test the logic directly by importing the functions

@@ -1,6 +1,6 @@
 import { db } from "@/lib/db";
 import { cacheGet, cacheSet } from "@/lib/redis";
-import type { Article, ArticleStatus } from "@prisma/client";
+import type { ArticleStatus } from "@prisma/client";
 
 // ============================================================
 // Distribution Engine

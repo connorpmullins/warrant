@@ -16,7 +16,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 import {
   PenSquare,
   FileText,
-  BarChart3,
   Shield,
   TrendingUp,
   DollarSign,

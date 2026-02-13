@@ -12,10 +12,6 @@ const PROTECTED_ROUTES = [
   "/bookmarks",
 ];
 
-// Routes that require specific roles
-const JOURNALIST_ROUTES = ["/journalist"];
-const ADMIN_ROUTES = ["/admin"];
-
 // API routes that require authentication (all non-public)
 const PROTECTED_API_ROUTES = [
   "/api/bookmarks",
