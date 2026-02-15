@@ -102,6 +102,7 @@ export async function getFeed(options?: {
   const total = await db.article.count({ where });
 
   // Fetch articles with all scoring data
+  const take = Math.max(limit * 3, offset + limit * 3);
   const articles = await db.article.findMany({
     where,
     include: {
@@ -131,7 +132,7 @@ export async function getFeed(options?: {
       },
     },
     orderBy: { publishedAt: "desc" },
-    take: limit * 3, // Fetch extra to re-rank
+    take, // Fetch enough rows for the requested page before re-ranking
   });
 
   // Score and rank

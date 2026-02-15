@@ -237,7 +237,7 @@ export default function ArticlePage({
         </p>
         <p className="text-sm text-muted-foreground mb-6">
           Originally published by{" "}
-          <Link href={`/author/${article.author.pseudonym}`} className="text-primary hover:underline">
+          <Link href={`/author/${encodeURIComponent(article.author.pseudonym)}`} className="text-primary hover:underline">
             {article.author.pseudonym}
           </Link>
           {article.publishedAt && (
@@ -340,7 +340,7 @@ export default function ArticlePage({
 
       {/* Author & meta */}
       <div className="flex items-center gap-3 mb-6">
-        <Link href={`/author/${article.author.pseudonym}`}>
+        <Link href={`/author/${encodeURIComponent(article.author.pseudonym)}`}>
           <Avatar className="h-10 w-10">
             <AvatarFallback>{authorInitials}</AvatarFallback>
           </Avatar>
@@ -348,7 +348,7 @@ export default function ArticlePage({
         <div>
           <div className="flex items-center gap-2">
             <Link
-              href={`/author/${article.author.pseudonym}`}
+              href={`/author/${encodeURIComponent(article.author.pseudonym)}`}
               className="font-medium hover:underline"
             >
               {article.author.pseudonym}

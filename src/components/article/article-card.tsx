@@ -102,7 +102,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
       {/* Meta row */}
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
         <Link
-          href={`/author/${article.author.pseudonym}`}
+          href={`/author/${encodeURIComponent(article.author.pseudonym)}`}
           className="flex items-center gap-2 hover:text-foreground min-w-0"
         >
           <Avatar className="h-6 w-6">

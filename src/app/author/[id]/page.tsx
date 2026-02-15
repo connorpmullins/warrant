@@ -48,7 +48,9 @@ export default function AuthorPage({
     async function fetchAuthor() {
       try {
         // Fetch articles by this author
-        const res = await fetch(`/api/articles?authorId=${id}&limit=50`);
+        const res = await fetch(
+          `/api/articles?authorId=${encodeURIComponent(id)}&limit=50`
+        );
         if (res.ok) {
           const data = await res.json();
           setArticles(

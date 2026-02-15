@@ -83,6 +83,9 @@ export default function AdminFlagsPage() {
       if (res.ok) {
         toast.success(`Flag ${status.toLowerCase()}`);
         setFlags(flags.filter((f) => f.id !== flagId));
+      } else {
+        const data = await res.json();
+        toast.error(data.error || "Failed to review flag");
       }
     } catch {
       toast.error("Failed to review flag");

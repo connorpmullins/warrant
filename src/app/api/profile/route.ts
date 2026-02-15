@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { updateProfileSchema } from "@/lib/validations";
+import { applyJournalistSchema, updateProfileSchema } from "@/lib/validations";
 import { successResponse, errorResponse, handleApiError } from "@/lib/api";
 import { auditLog } from "@/lib/audit";
 
@@ -68,15 +68,11 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { pseudonym, bio, beats } = body;
-
-    if (!pseudonym || pseudonym.length < 3) {
-      return errorResponse("Pseudonym must be at least 3 characters", 400);
-    }
+    const data = applyJournalistSchema.parse(body);
 
     // Check pseudonym uniqueness
     const existing = await db.journalistProfile.findFirst({
-      where: { pseudonym },
+      where: { pseudonym: data.pseudonym },
     });
     if (existing) {
       return errorResponse("Pseudonym is already taken", 400);
@@ -93,9 +89,9 @@ export async function POST(request: NextRequest) {
       await tx.journalistProfile.create({
         data: {
           userId: user.id,
-          pseudonym,
-          bio: bio || null,
-          beats: beats || [],
+          pseudonym: data.pseudonym,
+          bio: data.bio || null,
+          beats: data.beats,
           verificationStatus: "PENDING",
         },
       });
@@ -105,7 +101,7 @@ export async function POST(request: NextRequest) {
       userId: user.id,
       action: "journalist_application",
       entity: "JournalistProfile",
-      details: { pseudonym },
+      details: { pseudonym: data.pseudonym },
     });
 
     return successResponse({

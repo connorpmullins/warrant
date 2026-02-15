@@ -18,15 +18,36 @@ function generateSlug(title: string): string {
   );
 }
 
+function isUuid(value: string): boolean {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
+    value
+  );
+}
+
 // GET /api/articles - List articles (public, paginated)
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = request.nextUrl;
     const page = parseInt(searchParams.get("page") || "1");
     const limit = Math.min(parseInt(searchParams.get("limit") || "20"), 50);
-    const authorId = searchParams.get("authorId");
+    const authorParam = searchParams.get("authorId");
     const status = searchParams.get("status") || "PUBLISHED";
     const offset = (page - 1) * limit;
+
+    let authorId = authorParam;
+    if (authorParam && !isUuid(authorParam)) {
+      const profile = await db.journalistProfile.findUnique({
+        where: { pseudonym: authorParam },
+        select: { userId: true },
+      });
+      if (!profile) {
+        return successResponse({
+          articles: [],
+          pagination: { page, limit, total: 0, pages: 0 },
+        });
+      }
+      authorId = profile.userId;
+    }
 
     const session = await getSession();
     const isAdmin = session?.user.role === "ADMIN";

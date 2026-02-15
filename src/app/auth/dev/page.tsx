@@ -20,6 +20,15 @@ const DEV_ACCOUNTS = [
 export default function DevLoginPage() {
   const [loading, setLoading] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const enabled = process.env.NEXT_PUBLIC_ENABLE_DEV_LOGIN === "true";
+
+  if (!enabled) {
+    return (
+      <div className="container max-w-md mx-auto px-4 py-20 text-center">
+        <p className="text-muted-foreground">Not available.</p>
+      </div>
+    );
+  }
 
   async function loginAs(email: string) {
     setLoading(email);

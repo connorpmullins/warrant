@@ -161,7 +161,7 @@ export default function SearchPage() {
                 {authors.map((author) => (
                   <a
                     key={author.id}
-                    href={`/author/${author.pseudonym}`}
+                    href={`/author/${encodeURIComponent(author.pseudonym)}`}
                     className="block border rounded-lg p-4 hover:border-foreground/20 transition-colors"
                   >
                     <div className="flex items-center justify-between">

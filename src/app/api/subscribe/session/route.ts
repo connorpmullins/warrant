@@ -1,12 +1,13 @@
 import { NextRequest } from "next/server";
 import { requireAuth } from "@/lib/auth";
+import { db } from "@/lib/db";
 import { isStripeEnabled, retrieveCheckoutSession } from "@/lib/stripe";
 import { successResponse, errorResponse, handleApiError } from "@/lib/api";
 
 // GET /api/subscribe/session?session_id=cs_... - Retrieve checkout session details
 export async function GET(request: NextRequest) {
   try {
-    await requireAuth();
+    const user = await requireAuth();
 
     if (!isStripeEnabled()) {
       return errorResponse("Billing is temporarily unavailable", 503);
@@ -20,6 +21,19 @@ export async function GET(request: NextRequest) {
     const session = await retrieveCheckoutSession(sessionId);
     if (!session) {
       return errorResponse("Failed to retrieve session", 500);
+    }
+
+    const subscription = await db.subscription.findUnique({
+      where: { userId: user.id },
+      select: { stripeCustomerId: true },
+    });
+
+    if (!subscription?.stripeCustomerId) {
+      return errorResponse("No billing account found", 404);
+    }
+
+    if (session.customerId !== subscription.stripeCustomerId) {
+      return errorResponse("Session not found", 404);
     }
 
     return successResponse(session);

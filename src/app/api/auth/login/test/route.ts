@@ -2,13 +2,15 @@ import { NextRequest } from "next/server";
 import { createMagicLink } from "@/lib/auth";
 import { successResponse, errorResponse } from "@/lib/api";
 
-const PRODUCTION_HOSTNAME = "warrant.ink";
+function isDevLoginEnabled(): boolean {
+  if (process.env.NODE_ENV === "production") return false;
+  return process.env.ENABLE_DEV_LOGIN === "true";
+}
 
-// DEV/STAGING: Returns raw magic link token for E2E tests and staging login.
-// Blocked on production hostname only — available on localhost, dev.warrant.ink, and Vercel preview URLs.
+// Dev-only route for local testing/E2E.
+// Requires ENABLE_DEV_LOGIN=true and is never available in production builds.
 export async function POST(request: NextRequest) {
-  const host = request.headers.get("host")?.split(":")[0] || "";
-  if (host === PRODUCTION_HOSTNAME || host === `www.${PRODUCTION_HOSTNAME}`) {
+  if (!isDevLoginEnabled()) {
     return errorResponse("Not available", 404);
   }
 

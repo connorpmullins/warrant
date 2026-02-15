@@ -95,6 +95,7 @@ export async function retrieveCheckoutSession(
 ): Promise<{
   plan: string | null;
   status: string | null;
+  customerId: string | null;
   customerEmail: string | null;
   currentPeriodEnd: Date | null;
 } | null> {
@@ -110,6 +111,10 @@ export async function retrieveCheckoutSession(
   return {
     plan: firstItem?.price?.recurring?.interval ?? null,
     status: subscription?.status ?? null,
+    customerId:
+      typeof session.customer === "string"
+        ? session.customer
+        : session.customer?.id ?? null,
     customerEmail: session.customer_details?.email ?? null,
     currentPeriodEnd: firstItem?.current_period_end
       ? new Date(firstItem.current_period_end * 1000)
