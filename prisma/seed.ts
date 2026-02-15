@@ -1362,7 +1362,7 @@ async function main() {
       }));
 
       if (docs.length > 0) {
-        await idx.addDocuments(docs);
+        await idx.addDocuments(docs, { primaryKey: "id" });
       }
 
       // Also sync authors
@@ -1387,7 +1387,7 @@ async function main() {
         articleCount: p.articleCount,
       }));
       if (authorDocs.length > 0) {
-        await authIdx.addDocuments(authorDocs);
+        await authIdx.addDocuments(authorDocs, { primaryKey: "id" });
       }
 
       console.log(`  Synced ${docs.length} articles and ${authorDocs.length} authors to Meilisearch`);

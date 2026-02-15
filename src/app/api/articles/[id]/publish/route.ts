@@ -126,8 +126,9 @@ export async function POST(
     // Sync in Meilisearch
     try {
       await syncArticleInSearch(article.id);
-    } catch {
-      // Search indexing failure shouldn't block publishing
+    } catch (searchErr) {
+      // Search indexing failure shouldn't block publishing, but log it
+      console.error("Meilisearch sync failed for article", article.id, searchErr);
     }
 
     await auditLog({

@@ -149,7 +149,7 @@ export async function indexArticle(article: SearchableArticle): Promise<void> {
   const client = getMeili();
   if (!client) return;
   const index = client.index(ARTICLES_INDEX);
-  await index.addDocuments([article]);
+  await index.addDocuments([article], { primaryKey: "id" });
 }
 
 export async function removeArticleFromIndex(id: string): Promise<void> {
@@ -255,7 +255,7 @@ export async function indexAuthor(author: SearchableAuthor): Promise<void> {
   const client = getMeili();
   if (!client) return;
   const index = client.index(AUTHORS_INDEX);
-  await index.addDocuments([author]);
+  await index.addDocuments([author], { primaryKey: "id" });
 }
 
 export async function searchAuthors(
