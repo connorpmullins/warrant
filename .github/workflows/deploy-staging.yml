@@ -17,11 +17,39 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
       - name: Install Vercel CLI
         run: npm install -g vercel
 
       - name: Pull Vercel Environment
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply database schema changes
+        run: |
+          # Pull env vars into a sourceable file
+          vercel env pull .env.deploy --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+          set -a && source .env.deploy && set +a
+          rm .env.deploy
+
+          # Prefer direct (unpooled) connection for schema operations
+          export DATABASE_URL="${DATABASE_URL_UNPOOLED:-$DATABASE_URL}"
+
+          if [ -z "$DATABASE_URL" ]; then
+            echo "::error::DATABASE_URL not found in Vercel environment variables"
+            exit 1
+          fi
+
+          # db push without --accept-data-loss refuses destructive changes,
+          # protecting staging data. Only additive changes are applied.
+          npx prisma db push --skip-generate
 
       - name: Build
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
