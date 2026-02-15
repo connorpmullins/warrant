@@ -8,6 +8,8 @@ env:
   # Dummy values for build — no real services needed for CI
   DATABASE_URL: "postgresql://ci:ci@localhost:5432/ci"
   NEXT_PUBLIC_APP_URL: "http://localhost:3000"
+  # Required at build time by next.config.ts (real deployments use Vercel env vars).
+  BLOB_READ_WRITE_TOKEN: "vercel_blob_rw_dummy"
 
 jobs:
   ci:
