@@ -55,6 +55,7 @@ Data flows top-down: routes → services → lib → external deps.
 | E2E browser test runbook                        | [docs/e2e-runbook.md](docs/e2e-runbook.md)                       |
 | Product requirements                            | [docs/product-requirements.md](docs/product-requirements.md)     |
 | Roadmap and current status                      | [docs/roadmap.md](docs/roadmap.md)                               |
+| Environments, env vars, service degradation     | [docs/environments.md](docs/environments.md)                     |
 | Observability proposal                          | [docs/observability-proposal.md](docs/observability-proposal.md) |
 
 ---
@@ -74,6 +75,18 @@ Data flows top-down: routes → services → lib → external deps.
 2. Run `npm run db:push` to apply.
 3. Add mock methods to `src/test/setup.ts` in `mockPrismaClient`.
 4. Run `npm run check`.
+
+### Adding a new environment variable
+
+1. Add to `.env.example` with comment and default value.
+2. Add to `src/test/setup.ts` if tests need it.
+3. Handle absence gracefully in code (log warning, return 503 — never crash).
+4. Update `docs/environments.md` inventory table.
+5. Set in Vercel for staging and production.
+6. Update CI workflow `env:` blocks if needed at build/test time.
+7. Test in all three environments (local, staging, production).
+
+See `docs/environments.md` for the full env var inventory and degradation behaviors.
 
 ### Working with the integrity system
 
