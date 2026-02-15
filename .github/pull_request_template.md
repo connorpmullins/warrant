@@ -23,7 +23,7 @@
 
 <!-- If this PR touches src/services/integrity.ts, src/services/revenue.ts, or src/services/distribution.ts: -->
 
-- [ ] I have reviewed [docs/04_integrity_model.md](../docs/04_integrity_model.md)
+- [ ] I have reviewed [docs/integrity-model.md](../docs/integrity-model.md)
 - [ ] I have added tests covering edge cases (zero scores, maximum penalties, boundary conditions)
 - [ ] I have documented my reasoning below
 

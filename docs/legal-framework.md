@@ -1,6 +1,6 @@
 # Legal & Liability Framework
 
-*How we maintain platform status under Section 230 while enforcing high integrity standards.*
+_How we maintain platform status under Section 230 while enforcing high integrity standards._
 
 ---
 
@@ -20,6 +20,7 @@ Section 230 of the Communications Decency Act provides:
 2. Platforms are **explicitly protected** when they moderate content in good faith
 
 This means we **can** do:
+
 - Pre- or post-publication review
 - Fact-checking
 - Adding warnings/labels
@@ -40,16 +41,16 @@ The site required users to provide discriminatory information and used it in mat
 
 ### What Triggers "Material Contribution"
 
-| Action | Risk Level |
-|--------|------------|
-| Moderating, removing, downranking | ✅ Safe |
-| Fact-check labels ("Disputed") | ✅ Safe |
-| Adding context links | ✅ Safe |
-| Algorithmic recommendations | ✅ Mostly safe |
-| Co-writing or rewriting user posts | ⚠️ Risky |
-| Forcing prompts that elicit unlawful content | ⚠️ Risky |
-| Commissioning + editorial control | ⚠️ Risky |
-| Claiming "everything here is verified true" | ⚠️ Risky |
+| Action                                       | Risk Level     |
+| -------------------------------------------- | -------------- |
+| Moderating, removing, downranking            | ✅ Safe        |
+| Fact-check labels ("Disputed")               | ✅ Safe        |
+| Adding context links                         | ✅ Safe        |
+| Algorithmic recommendations                  | ✅ Mostly safe |
+| Co-writing or rewriting user posts           | ⚠️ Risky       |
+| Forcing prompts that elicit unlawful content | ⚠️ Risky       |
+| Commissioning + editorial control            | ⚠️ Risky       |
+| Claiming "everything here is verified true"  | ⚠️ Risky       |
 
 ---
 
@@ -134,6 +135,7 @@ Certain content types require additional process:
 **Do say:** "We use rigorous standards, publish corrections, and enforce credibility-based distribution"
 
 The word "verified" should only apply to:
+
 - Identity verification ("Verified contributor")
 - Process completion ("Sources verified as attached")
 
@@ -144,16 +146,19 @@ Never to content truth claims.
 ## 8. Subpoena & Legal Pressure
 
 ### What We Store
+
 - Verification outcome (pass/fail)
 - Minimal PII necessary for verification
 - Pseudonymous author profiles (public-facing)
 
 ### Architectural Principle
+
 - Separate identity verification data from publishing activity
 - Consider jurisdictional placement of sensitive data
 - Document retention policies before launch
 
 ### Threat Scenarios
+
 - US subpoena for journalist identity
 - Foreign government request
 - Civil discovery in defamation suit
@@ -165,6 +170,7 @@ Each requires pre-planned response protocols. See threat model (separate doc).
 ## 9. Insurance
 
 Before launch, obtain:
+
 - **Media liability insurance** (covers defamation claims)
 - **D&O insurance** (directors and officers)
 - **Cyber liability insurance** (data breach)
@@ -175,10 +181,10 @@ Even with platform posture, insurance provides defense cost coverage.
 
 ## 10. Summary
 
-| Principle | Implementation |
-|-----------|----------------|
-| Platform, not publisher | No editing, no commissioning, no co-authoring |
-| Process language | "Supported/disputed/insufficient" not "true/false" |
-| Clear attribution | Author owns claims, platform owns labels |
-| High-risk gating | Escalation triggers for sensitive content |
-| Defensive marketing | Never claim omniscience |
+| Principle               | Implementation                                     |
+| ----------------------- | -------------------------------------------------- |
+| Platform, not publisher | No editing, no commissioning, no co-authoring      |
+| Process language        | "Supported/disputed/insufficient" not "true/false" |
+| Clear attribution       | Author owns claims, platform owns labels           |
+| High-risk gating        | Escalation triggers for sensitive content          |
+| Defensive marketing     | Never claim omniscience                            |

@@ -98,15 +98,15 @@ This gives true closed-loop operations instead of "advice only."
 
 ## 5. Stack Mapping for Warrant
 
-| Concern | Recommended Choice | Why it fits current stack |
-|---|---|---|
-| Runtime errors | Sentry Next.js SDK | Native Next.js and Vercel support |
-| App traces | OpenTelemetry + Sentry bridge | Works with `src/instrumentation.ts` |
-| Logs | Pino + Vercel Log Drains -> Axiom/Datadog | Structured logs from server routes |
-| DB health | Neon metrics + scheduled SQL snapshots | Matches Neon production topology |
-| Payments health | Stripe webhook and API monitoring | Critical revenue flow |
-| Synthetic checks | Playwright checks in scheduled runs | You already have E2E coverage |
-| AI integration | Custom MCP ops server | Gives AI actionable tools and evidence |
+| Concern          | Recommended Choice                        | Why it fits current stack              |
+| ---------------- | ----------------------------------------- | -------------------------------------- |
+| Runtime errors   | Sentry Next.js SDK                        | Native Next.js and Vercel support      |
+| App traces       | OpenTelemetry + Sentry bridge             | Works with `src/instrumentation.ts`    |
+| Logs             | Pino + Vercel Log Drains -> Axiom/Datadog | Structured logs from server routes     |
+| DB health        | Neon metrics + scheduled SQL snapshots    | Matches Neon production topology       |
+| Payments health  | Stripe webhook and API monitoring         | Critical revenue flow                  |
+| Synthetic checks | Playwright checks in scheduled runs       | You already have E2E coverage          |
+| AI integration   | Custom MCP ops server                     | Gives AI actionable tools and evidence |
 
 ## 6. Implementation Plan
 
@@ -216,4 +216,3 @@ This gives practical end-to-end coverage quickly, then expand.
 4. MCP deployment model:
    - Sidecar in Vercel functions
    - Separate internal service
-

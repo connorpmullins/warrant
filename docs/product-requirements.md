@@ -5,12 +5,13 @@
 **Last Updated:** 2026-01-21
 
 > **Implementation note (Feb 2026):** The v1 build descoped the following from this original PRD:
+>
 > - **Mobile app** — Web-only (Next.js 16). Mobile deferred to v2+.
 > - **Knowledge graph / wiki layer** — Deferred to v2+. See Appendix.
 > - **Jumio for identity verification** — Replaced with Stripe Identity (integrated with existing Stripe billing).
 > - **Reviewer / validator role** — Deferred to v2+.
 >
-> Everything else in this PRD was implemented. See [ROADMAP.md](./ROADMAP.md) for current status.
+> Everything else in this PRD was implemented. See [roadmap.md](./roadmap.md) for current status.
 
 ---
 
@@ -32,6 +33,7 @@ Build a paid subscription platform (web + mobile) that:
 ### Reader Problem
 
 Readers who will pay for news want:
+
 - High-signal investigative reporting
 - Clear provenance and sourcing
 - Confidence that falsehoods are punished and corrected
@@ -40,6 +42,7 @@ Readers who will pay for news want:
 ### Journalist Problem
 
 Independent journalists want:
+
 - A credible distribution channel
 - Fair monetization without ad incentives
 - Protection against engagement gaming
@@ -48,6 +51,7 @@ Independent journalists want:
 ### Ecosystem Problem
 
 Digital media incentives reward:
+
 - Speed over verification
 - Outrage/engagement over truth
 - Low accountability for repeat inaccuracies
@@ -83,17 +87,20 @@ Digital media incentives reward:
 ## 5. Personas
 
 ### Reader / Subscriber
+
 - Pays monthly/annual
 - Reads, saves, shares
 - Can flag issues, suggest corrections, vote on product features
 
 ### Verified Journalist (First-hand Contributor)
+
 - Verified human identity (government ID + liveness)
 - Publishes first-hand reporting under author profile
 - Earns revenue share
 - Subject to integrity scoring and penalties
 
 ### Platform Integrity Ops (Internal)
+
 - Handles escalations: defamation-risk flags, abuse, repeated policy violations
 
 ---
@@ -103,6 +110,7 @@ Digital media incentives reward:
 ### A. Journalism Marketplace (Core)
 
 **Reader-facing:**
+
 - Feed / homepage (personalized + editorial-neutral ranking)
 - Article page with:
   - Author identity badge ("Verified contributor")
@@ -112,12 +120,14 @@ Digital media incentives reward:
 - Author page: bio, beats, track record, reputation summary
 
 **Journalist-facing:**
+
 - Submission portal
 - Source attachment UI (required fields)
 - Analytics (views, reads, revenue, integrity flags)
 - Corrections workflow
 
 **Behind the scenes:**
+
 - Distribution engine (reputation + integrity signals affect reach)
 - Revenue share ledger (monthly payouts)
 - Flagging + label system
@@ -134,37 +144,39 @@ Digital media incentives reward:
 
 ### P0 (Must Have)
 
-| Feature | Description |
-|---------|-------------|
-| Paid subscription | Monthly + annual plans, web + app |
+| Feature               | Description                                        |
+| --------------------- | -------------------------------------------------- |
+| Paid subscription     | Monthly + annual plans, web + app                  |
 | Journalist onboarding | Identity verification via SaaS (Jumio recommended) |
-| Article submission | No substantive editing by platform |
-| Source attachment | Required fields for citations |
-| Distribution engine | Reputation-weighted ranking |
-| Flagging + labels | "Disputed", "Needs Source", etc. |
-| Corrections flow | Author-initiated + platform-initiated |
-| Revenue ledger | Monthly payouts (can be manual initially) |
+| Article submission    | No substantive editing by platform                 |
+| Source attachment     | Required fields for citations                      |
+| Distribution engine   | Reputation-weighted ranking                        |
+| Flagging + labels     | "Disputed", "Needs Source", etc.                   |
+| Corrections flow      | Author-initiated + platform-initiated              |
+| Revenue ledger        | Monthly payouts (can be manual initially)          |
 
 ### P1 (Should Have)
 
-| Feature | Description |
-|---------|-------------|
-| Author profiles | Integrity summaries, track record |
-| Share links | Previews for non-subscribers |
-| Bookmarking | Reader saves + notifications |
-| Journalist analytics | Views, reads, revenue, flags |
+| Feature              | Description                       |
+| -------------------- | --------------------------------- |
+| Author profiles      | Integrity summaries, track record |
+| Share links          | Previews for non-subscribers      |
+| Bookmarking          | Reader saves + notifications      |
+| Journalist analytics | Views, reads, revenue, flags      |
 
 ---
 
 ## 8. Success Metrics
 
 ### Marketplace Health
+
 - Subscriber conversion rate, churn, retention
 - % of subscription revenue paid to journalists
 - Revenue concentration (Gini coefficient—avoid winner-take-all)
 - Publish cadence
 
 ### Integrity
+
 - % of articles with complete sourcing
 - Correction rate and severity
 - Dispute resolution time
@@ -176,6 +188,7 @@ Digital media incentives reward:
 ## 9. Technical Architecture (High-Level)
 
 ### Suggested Stack
+
 - **Web:** Next.js / React
 - **Mobile:** React Native (or Flutter)
 - **Backend:** API service + content store
@@ -184,6 +197,7 @@ Digital media incentives reward:
 - **Search:** Meilisearch or Elasticsearch
 
 ### Core Services
+
 - Identity & roles
 - Content ingestion + storage
 - Integrity signals engine
@@ -195,12 +209,12 @@ Digital media incentives reward:
 
 ## 10. Risks
 
-| Risk | Mitigation |
-|------|------------|
-| Becoming a "publisher" by behavior | Strict "no substantive edits" policy; clear platform labels |
-| Reputation system gamed | Weight by verified identity + tenure; detect coordination |
-| Journalists don't adopt | Solve real pain (monetization, distribution) on day one |
-| Legal exposure | Liability insurance; rapid takedown process; pre-pub gating for high-risk claims |
+| Risk                               | Mitigation                                                                       |
+| ---------------------------------- | -------------------------------------------------------------------------------- |
+| Becoming a "publisher" by behavior | Strict "no substantive edits" policy; clear platform labels                      |
+| Reputation system gamed            | Weight by verified identity + tenure; detect coordination                        |
+| Journalists don't adopt            | Solve real pain (monetization, distribution) on day one                          |
+| Legal exposure                     | Liability insurance; rapid takedown process; pre-pub gating for high-risk claims |
 
 ---
 

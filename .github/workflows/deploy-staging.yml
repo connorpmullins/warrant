@@ -68,3 +68,15 @@ jobs:
         run: |
           echo "Aliasing ${{ steps.deploy.outputs.url }} to dev.warrant.ink"
           vercel alias set "${{ steps.deploy.outputs.url }}" dev.warrant.ink --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }}
+
+      - name: Smoke test
+        if: steps.deploy.outputs.url != ''
+        run: |
+          echo "Waiting for deployment to stabilize..."
+          sleep 15
+          echo "Testing integration endpoint..."
+          curl -sf https://dev.warrant.ink/api/system/integrations || exit 1
+          echo ""
+          echo "Testing homepage..."
+          curl -sf -o /dev/null https://dev.warrant.ink/ || exit 1
+          echo "Smoke tests passed."
