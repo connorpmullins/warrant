@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import { requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { reviewFlagSchema } from "@/lib/validations";
-import { successResponse, handleApiError } from "@/lib/api";
+import { successResponse, errorResponse, handleApiError } from "@/lib/api";
 import { auditLog } from "@/lib/audit";
 import { recordReputationEvent, applyLabel } from "@/services/integrity";
 
@@ -58,7 +58,7 @@ export async function PATCH(request: NextRequest) {
     });
 
     if (!flag) {
-      return successResponse({ error: "Flag not found" });
+      return errorResponse("Flag not found", 404);
     }
 
     await db.flag.update({

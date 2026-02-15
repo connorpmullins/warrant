@@ -97,6 +97,9 @@ export default function AdminDisputesPage() {
       if (res.ok) {
         toast.success(`Dispute ${status.toLowerCase()}`);
         setDisputes(disputes.filter((d) => d.id !== disputeId));
+      } else {
+        const data = await res.json();
+        toast.error(data.error || "Failed to resolve dispute");
       }
     } catch {
       toast.error("Failed to resolve dispute");

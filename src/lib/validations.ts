@@ -185,6 +185,19 @@ export const updateProfileSchema = z.object({
   beats: z.array(z.string().max(50)).max(10).optional(),
 });
 
+export const applyJournalistSchema = z.object({
+  pseudonym: z
+    .string()
+    .min(3, "Pseudonym must be at least 3 characters")
+    .max(30)
+    .regex(
+      /^[a-zA-Z0-9._-]+$/,
+      "Pseudonym can only contain letters, numbers, dots, dashes, and underscores"
+    ),
+  bio: z.string().max(1000).optional(),
+  beats: z.array(z.string().max(50)).max(10).optional().default([]),
+});
+
 // ============================================================
 // Feature Requests
 // ============================================================
@@ -198,6 +211,10 @@ export const createFeatureRequestSchema = z.object({
     .string()
     .min(20, "Description must be at least 20 characters")
     .max(5000),
+});
+
+export const createSubscriptionSchema = z.object({
+  plan: z.enum(["monthly", "annual"]),
 });
 
 // ============================================================

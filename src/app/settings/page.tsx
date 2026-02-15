@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "@/components/providers";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -26,13 +26,14 @@ export default function SettingsPage() {
   const [startingConnect, setStartingConnect] = useState(false);
   const [managingSubscription, setManagingSubscription] = useState(false);
 
-  if (!initialized && user) {
+  useEffect(() => {
+    if (initialized || !user) return;
     setDisplayName(user.displayName || "");
     setPseudonym(user.journalistProfile?.pseudonym || "");
     setBio(user.journalistProfile?.bio || "");
     setBeats(user.journalistProfile?.beats?.join(", ") || "");
     setInitialized(true);
-  }
+  }, [initialized, user]);
 
   if (authLoading) {
     return (

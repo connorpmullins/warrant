@@ -9,9 +9,9 @@
 
 **Live URL:** https://warrant.ink
 **Database:** Neon Postgres (connected via Vercel Marketplace)
-**Unit Tests:** 161 passing (`npm run test`)
-**E2E Tests:** 36+ passing (`npm run test:e2e`) — Playwright, Flows 1-8 + 3d/3e from runbook
-**Build:** Passing (`npm run build`)
+**Unit Tests:** Green (`npm run test`)
+**E2E Tests:** Green (`npm run test:e2e`) — Playwright, Flows 1-8 + 3d/3e from runbook
+**Build:** Passing in CI (`npm run build`)
 
 ### Features
 
@@ -191,8 +191,8 @@ npx vercel deploy --prod
 # Local dev
 docker compose up -d    # Start Postgres, Redis, Meilisearch, Mailpit
 npm run dev             # Start Next.js dev server
-npm run test            # Run 142+ unit tests
-npm run test:e2e        # Run 32+ Playwright E2E tests
+npm run test            # Run unit tests
+npm run test:e2e        # Run Playwright E2E tests
 npm run db:reset        # Reset + re-seed database
 npm run db:seed         # Seeds DB + syncs Meilisearch
 ```

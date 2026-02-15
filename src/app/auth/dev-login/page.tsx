@@ -1,12 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Loader2 } from "lucide-react";
-
-const PRODUCTION_HOSTNAME = "warrant.ink";
 
 const DEV_ACCOUNTS = [
   { email: "admin@warrant.ink", label: "Admin", role: "ADMIN", color: "destructive" as const },
@@ -22,12 +20,7 @@ const DEV_ACCOUNTS = [
 export default function DevLoginPage() {
   const [loading, setLoading] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [isProduction, setIsProduction] = useState(true);
-
-  useEffect(() => {
-    // Block on production hostname only — allow localhost, dev.warrant.ink, and Vercel preview URLs
-    setIsProduction(window.location.hostname === PRODUCTION_HOSTNAME);
-  }, []);
+  const enabled = process.env.NEXT_PUBLIC_ENABLE_DEV_LOGIN === "true";
 
   async function loginAs(email: string) {
     setLoading(email);
@@ -58,10 +51,10 @@ export default function DevLoginPage() {
     }
   }
 
-  if (isProduction) {
+  if (!enabled) {
     return (
       <div className="container max-w-md mx-auto px-4 py-20 text-center">
-        <p className="text-muted-foreground">Not available in production.</p>
+        <p className="text-muted-foreground">Not available.</p>
       </div>
     );
   }
