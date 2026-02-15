@@ -47,6 +47,8 @@ export const mockPrismaClient = {
     findMany: vi.fn(),
     create: vi.fn(),
     update: vi.fn(),
+    updateMany: vi.fn(),
+    count: vi.fn(),
   },
   article: {
     findUnique: vi.fn(),
@@ -111,6 +113,9 @@ export const mockPrismaClient = {
   },
   auditLog: {
     create: vi.fn(),
+    findFirst: vi.fn(),
+    findMany: vi.fn(),
+    groupBy: vi.fn(),
   },
   notification: {
     findMany: vi.fn(),
@@ -135,6 +140,7 @@ export const mockPrismaClient = {
   revenueEntry: {
     findMany: vi.fn(),
     create: vi.fn(),
+    update: vi.fn(),
     count: vi.fn(),
     aggregate: vi.fn(),
   },
@@ -215,7 +221,9 @@ export { mockCookieStore };
 
 vi.mock("next/navigation", () => ({
   redirect: vi.fn((url: string) => {
-    throw new RedirectError(url);
+    const err = new RedirectError(url);
+    (err as RedirectError & { digest: string }).digest = `NEXT_REDIRECT;${url}`;
+    throw err;
   }),
   useRouter: vi.fn(() => ({
     push: vi.fn(),
@@ -283,6 +291,8 @@ vi.mock("@/lib/stripe", () => ({
   createVerificationSession: vi.fn(),
   getVerificationSessionStatus: vi.fn(),
   constructWebhookEvent: vi.fn(),
+  createBillingPortalSession: vi.fn(),
+  getConnectAccountStatus: vi.fn(),
 }));
 
 // ============================================================

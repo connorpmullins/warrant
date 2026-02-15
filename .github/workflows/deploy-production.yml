@@ -13,10 +13,29 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
-  deploy:
-    name: Deploy to Production (warrant.ink)
+  verify-staging:
+    name: Verify Staging Health
     runs-on: ubuntu-latest
     if: github.event.inputs.confirm == 'publish'
+
+    steps:
+      - name: Check staging is healthy
+        run: |
+          echo "Verifying staging (dev.warrant.ink) is healthy before production deploy..."
+          curl -sf https://dev.warrant.ink/api/system/integrations || {
+            echo "::error::Staging integration check failed. Fix staging before deploying to production."
+            exit 1
+          }
+          curl -sf -o /dev/null https://dev.warrant.ink/ || {
+            echo "::error::Staging homepage is unreachable. Fix staging before deploying to production."
+            exit 1
+          }
+          echo "Staging is healthy. Proceeding with production deploy."
+
+  deploy:
+    name: Deploy to Production (warrant.ink)
+    needs: verify-staging
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout

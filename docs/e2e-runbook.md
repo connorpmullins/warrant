@@ -64,6 +64,7 @@ Goal: verify public pages and basic nav render.
 5. Confirm each page returns content, not 404/blank.
 
 Pass criteria:
+
 - All pages render with no fatal console errors.
 
 ## Flow 2: Reader + Paywall + Subscribe
@@ -85,6 +86,7 @@ Goal: verify reader auth, paywall-to-checkout flow, dynamic payment methods, and
 9. Confirm `/subscribe/success` (without `session_id`) still renders gracefully with generic confirmation and both CTA buttons.
 
 Pass criteria:
+
 - No 500 from `/api/subscribe`.
 - Checkout session opens successfully with dynamic payment methods.
 - Success page renders with session details when `session_id` is present.
@@ -107,6 +109,7 @@ Goal: verify subscribers can manage their subscription via Stripe's hosted billi
 8. Confirm subscription card shows "No active subscription." and a "Subscribe" button linking to `/subscribe` — **not** the "Manage Subscription" button.
 
 Pass criteria:
+
 - `POST /api/subscribe/portal` returns 200 with portal URL for subscribed users.
 - `POST /api/subscribe/portal` returns 404 for users without a Stripe customer ID.
 - "Manage Subscription" button only appears for active subscribers.
@@ -128,6 +131,7 @@ Goal: verify journalist tooling works and editor mounts correctly.
 6. Enter title + summary + source title.
 
 Pass criteria:
+
 - `/journalist/write` is not blank.
 - No Tiptap SSR/hydration fatal errors in console.
 
@@ -153,6 +157,7 @@ Goal: verify that a draft article with image content can be loaded back into the
 8. Confirm the image renders inline within the article body.
 
 Pass criteria:
+
 - Editor loads full draft content including images on `/journalist/write?edit=<id>`.
 - Publish saves editor changes before calling the publish endpoint.
 - No crash, blank page, or 5xx during the flow.
@@ -195,6 +200,7 @@ Goal: verify journalists can delete drafts, edit published articles, and withdra
    - Confirm a "Back to feed" button is present.
 
 Pass criteria:
+
 - Delete only works on drafts — not published.
 - Edit on published requires a change note.
 - Withdrawal sets status to REMOVED and shows tombstone.
@@ -218,6 +224,7 @@ Goal: verify journalists can issue corrections from the article detail page and 
 9. Confirm a "CORRECTION ISSUED" integrity label badge appears on the article.
 
 Pass criteria:
+
 - Correction form is only visible to the article's author.
 - Correction appears at the top of the article body.
 - `CORRECTION_ISSUED` badge renders after submission.
@@ -233,6 +240,7 @@ Goal: verify revenue reporting page loads.
 4. Confirm revenue history section is visible (may be empty if no entries).
 
 Pass criteria:
+
 - Page loads without errors.
 - No auth redirect.
 
@@ -249,6 +257,7 @@ Goal: verify payout onboarding path.
 5. Confirm request to `/api/profile/connect` succeeds and onboarding URL/redirect is returned.
 
 Pass criteria:
+
 - `POST /api/profile/connect` returns success (if verified) or 403 (if not verified).
 - Settings page shows both Identity and Connect sections for journalists.
 
@@ -264,6 +273,7 @@ Goal: verify admin actions can be executed from UI.
 6. Confirm moderation request succeeds (`PATCH /api/admin/flags`).
 
 Pass criteria:
+
 - Admin pages load without auth issues.
 - Flag action returns success and reflects updated status.
 
@@ -279,6 +289,7 @@ Goal: verify protected routes still require auth/role.
 2. Confirm redirect/block behavior (login or unauthorized route), not data leakage.
 
 Pass criteria:
+
 - No protected content is visible unauthenticated.
 - Admin routes are not accessible by non-admin users.
 
@@ -294,6 +305,7 @@ Goal: verify that image and video content renders correctly in articles.
 4. Confirm the iframe `src` points to `https://www.youtube.com/embed/...`.
 
 Pass criteria:
+
 - Video iframe renders inline within the article body.
 - No CSP errors in the console related to `frame-src`.
 - Video does not break article layout.
@@ -304,6 +316,7 @@ Pass criteria:
 2. Confirm the image renders within the article body with rounded corners and responsive sizing.
 
 Pass criteria:
+
 - Image loads successfully (no broken image icon).
 - Image is contained within the article width.
 
@@ -316,6 +329,7 @@ Pass criteria:
 5. Click "Upload image" — confirm a file picker dialog opens and the image uploads successfully (requires `BLOB_READ_WRITE_TOKEN` to be configured).
 
 Pass criteria:
+
 - Both media toolbar buttons are present and functional.
 - Video embed inserts into editor content.
 - Image upload triggers native file picker.
@@ -330,6 +344,7 @@ Goal: verify that article reads are tracked for revenue calculation.
 4. Refresh the page — the same request should still return 200 (de-duplication is internal; the endpoint always returns success).
 
 Pass criteria:
+
 - Read tracking fires automatically when a subscriber views an article.
 - No 5xx from the read endpoint.
 
@@ -344,6 +359,7 @@ Run this during all flows:
    - subscription/connect endpoints failing (`/api/subscribe`, `/api/subscribe/portal`, `/api/subscribe/session`, `/api/profile/connect`)
 
 Pass criteria:
+
 - No uncaught exceptions that break user flows.
 - No unexplained 5xx in core flows.
 

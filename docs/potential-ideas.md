@@ -1,6 +1,6 @@
 # Potential Ideas
 
-*Features and concepts under consideration — not yet committed to.*
+_Features and concepts under consideration — not yet committed to._
 
 ---
 
@@ -34,4 +34,4 @@
 
 ---
 
-*Add new ideas below as they arise.*
+_Add new ideas below as they arise._

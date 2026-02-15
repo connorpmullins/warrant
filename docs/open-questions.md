@@ -1,6 +1,6 @@
 # Open Questions
 
-*Things to resolve before, during, or shortly after building.*
+_Things to resolve before, during, or shortly after building._
 
 > **Updated Feb 2026:** Questions marked **RESOLVED** have been answered by the v1 implementation. Remaining questions are still open for future phases or business decisions.
 
@@ -31,6 +31,7 @@ Too loose → platform has no differentiation
 ### What does this replace, day one?
 
 Journalists won't adopt if it's "one more place to post." It needs to solve immediate pain:
+
 - Monetization (better than Substack?)
 - Distribution (better than Twitter?)
 - Credibility (better than personal brand?)
@@ -58,6 +59,7 @@ Implemented as integrity labels: `SUPPORTED`, `DISPUTED`, `INSUFFICIENT_SOURCING
 ### How do validators appeal penalties?
 
 If "verification is publication" and validators inherit liability:
+
 - What's the appeals process?
 - What evidence overturns a penalty?
 - How long does it take?
@@ -109,6 +111,7 @@ Need pre-planned response protocols.
 ### Can the identity system degrade safely?
 
 If compromised:
+
 - Can journalists revoke/rotate identities?
 - Can they continue publishing?
 - What's the blast radius?
@@ -120,6 +123,7 @@ If compromised:
 ### Who is empowered to say "no"?
 
 When money, growth, or governments push for rule changes:
+
 - Who has veto power?
 - What's the governance structure?
 - How do you prevent gradual capture?
@@ -129,11 +133,13 @@ When money, growth, or governments push for rule changes:
 ### How do we prevent the platform from becoming a battlefield?
 
 Controversial topics will attract:
+
 - Brigading
 - Coordinated flagging
 - Bad-faith disputes
 
 **Mitigations needed:**
+
 - Sampling-based reviews
 - Coordination detection
 - Topic-specific policies?
@@ -167,6 +173,7 @@ Prisma schema includes `ArticleVersion` model for content versioning, `Integrity
 ### How do we handle content takedowns?
 
 When content is removed:
+
 - Is it truly deleted?
 - Archived for legal?
 - Visible to author but not public?
@@ -184,6 +191,7 @@ When content is removed:
 ### What's our response to a defamation lawsuit?
 
 Even frivolous suits are expensive. Need:
+
 - Rapid response protocol
 - Pre-identified counsel
 - Decision tree for settlement vs. defense
@@ -193,6 +201,7 @@ Even frivolous suits are expensive. Need:
 ### What's our GDPR / international data story?
 
 If journalists or readers are in EU:
+
 - Data residency requirements
 - Right to deletion vs. audit trail
 - Consent flows
@@ -212,6 +221,7 @@ If journalists or readers are in EU:
 ### What if no one comes?
 
 Cold start problem:
+
 - How do we get first 10 journalists?
 - First 100 subscribers?
 - First credibility-defining story?
@@ -228,14 +238,14 @@ Cold start problem:
 
 ## Priority Matrix
 
-| Question | Urgency | Status |
-|----------|---------|--------|
-| What qualifies as "first-hand"? | High | Open — policy decision needed before real journalists onboard |
-| Identity key custody | High | Partially resolved — Stripe holds verification data; subpoena response protocol still needed |
-| Revenue split model | Medium | Resolved — implemented with Gini correction |
-| GDPR compliance | Medium | Open — depends on launch market |
-| Governance structure | Low | Open — can evolve |
-| Acquisition protections | Low | Open |
+| Question                        | Urgency | Status                                                                                       |
+| ------------------------------- | ------- | -------------------------------------------------------------------------------------------- |
+| What qualifies as "first-hand"? | High    | Open — policy decision needed before real journalists onboard                                |
+| Identity key custody            | High    | Partially resolved — Stripe holds verification data; subpoena response protocol still needed |
+| Revenue split model             | Medium  | Resolved — implemented with Gini correction                                                  |
+| GDPR compliance                 | Medium  | Open — depends on launch market                                                              |
+| Governance structure            | Low     | Open — can evolve                                                                            |
+| Acquisition protections         | Low     | Open                                                                                         |
 
 ---
 

@@ -13,6 +13,12 @@ export default defineConfig({
       provider: "v8",
       include: ["src/lib/**", "src/services/**", "src/app/api/**"],
       exclude: ["src/test/**", "**/*.d.ts"],
+      thresholds: {
+        lines: 45,
+        functions: 45,
+        branches: 35,
+        statements: 45,
+      },
     },
   },
   resolve: {

@@ -1,12 +1,13 @@
 # Platform Axioms
 
-*Core principles that guide all product, policy, and technical decisions.*
+_Core principles that guide all product, policy, and technical decisions._
 
 ---
 
 ## 1. Platform, Not Publisher
 
 We do not write, commission, or substantively edit journalists' claims. We enforce standards via:
+
 - gating
 - labeling
 - downranking
@@ -22,6 +23,7 @@ We do not write, commission, or substantively edit journalists' claims. We enfor
 We never claim omniscience. We never say "verified true."
 
 Instead, we use process-based states:
+
 - **Supported** — multiple credible sources align
 - **Disputed** — credible counter-evidence exists
 - **Insufficient sourcing** — claim lacks adequate backing
@@ -38,7 +40,7 @@ Any account that publicly validates a claim assumes the **same responsibility an
 - Posting false information → penalty
 - Validating false information → **identical penalty**
 
-This collapses the moral and reputational distinction between *author* and *endorser*.
+This collapses the moral and reputational distinction between _author_ and _endorser_.
 
 **Why this matters:** Closes the "liability gap" where low-reputation actors post risky claims and high-reputation actors "verify" them cheaply. Makes endorsement a scarce, high-stakes action.
 
@@ -58,6 +60,7 @@ Verification grants an internal "Verified Human" credential without forcing publ
 ## 5. Reversibility + Auditability
 
 Every claim and edit is:
+
 - **Attributable** — tied to an account
 - **Versioned** — full history preserved
 - **Reversible** — can be rolled back
@@ -69,6 +72,7 @@ Every claim and edit is:
 ## 6. Separate Lanes of Speech
 
 Journalist content is clearly attributed to journalists. Platform speech is limited to:
+
 - Labels
 - Integrity notices
 - Policy explanations
